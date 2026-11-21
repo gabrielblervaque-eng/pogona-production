@@ -1,0 +1,277 @@
+{
+  "media": {
+    "input": "media",
+    "output": "/media"
+  },
+  "content": [
+    {
+      "name": "site",
+      "label": "Mon site Pogona",
+      "type": "file",
+      "path": "site.json",
+      "format": "json",
+      "fields": [
+        {
+          "name": "title",
+          "label": "Titre du site",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "label": "Description pour Google",
+          "type": "text"
+        },
+        {
+          "name": "logo",
+          "label": "Logo",
+          "type": "image"
+        },
+        {
+          "name": "production",
+          "label": "Mention sous le logo",
+          "type": "string"
+        },
+        {
+          "name": "hero",
+          "label": "Accueil vidéo",
+          "type": "object",
+          "fields": [
+            {
+              "name": "line1",
+              "label": "Signature — première ligne",
+              "type": "string"
+            },
+            {
+              "name": "line2",
+              "label": "Signature — seconde ligne",
+              "type": "string"
+            },
+            {
+              "name": "subtitle",
+              "label": "Sous-titre",
+              "type": "string"
+            },
+            {
+              "name": "discover",
+              "label": "Bouton découvrir",
+              "type": "string"
+            },
+            {
+              "name": "video",
+              "label": "Vidéo",
+              "type": "file"
+            },
+            {
+              "name": "image",
+              "label": "Image",
+              "type": "image"
+            },
+            {
+              "name": "mobileImage",
+              "label": "Image mobile",
+              "type": "image"
+            },
+            {
+              "name": "alt",
+              "label": "Description de l’image",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "navigation",
+          "label": "Navigation",
+          "type": "object",
+          "fields": [
+            {
+              "name": "projects",
+              "label": "Projets",
+              "type": "string"
+            },
+            {
+              "name": "approach",
+              "label": "Mon approche",
+              "type": "string"
+            },
+            {
+              "name": "contact",
+              "label": "Contact",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "introduction",
+          "label": "Présentation courte",
+          "type": "object",
+          "fields": [
+            {
+              "name": "name",
+              "label": "Nom",
+              "type": "string"
+            },
+            {
+              "name": "roles",
+              "label": "Métiers",
+              "type": "string"
+            },
+            {
+              "name": "sectors",
+              "label": "Secteurs",
+              "type": "string"
+            },
+            {
+              "name": "location",
+              "label": "Zone géographique",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "projectsTitle",
+          "label": "Titre des projets",
+          "type": "string"
+        },
+        {
+          "name": "projectsIntroduction",
+          "label": "Introduction des projets",
+          "type": "text"
+        },
+        {
+          "name": "projects",
+          "label": "Projets",
+          "type": "object",
+          "list": true,
+          "fields": [
+            {
+              "name": "title",
+              "label": "Titre du site",
+              "type": "string"
+            },
+            {
+              "name": "category",
+              "label": "Catégorie",
+              "type": "string"
+            },
+            {
+              "name": "image",
+              "label": "Image",
+              "type": "image"
+            },
+            {
+              "name": "alt",
+              "label": "Description de l’image",
+              "type": "string"
+            },
+            {
+              "name": "portalTitle",
+              "label": "Titre dans la transition",
+              "type": "string"
+            },
+            {
+              "name": "portalLabel",
+              "label": "Catégorie dans la transition",
+              "type": "string"
+            },
+            {
+              "name": "portalText",
+              "label": "Texte dans la transition",
+              "type": "text"
+            },
+            {
+              "name": "portalLink",
+              "label": "Bouton de la transition",
+              "type": "string"
+            },
+            {
+              "name": "href",
+              "label": "Destination du bouton",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "portalCaption",
+          "label": "Titre de la transition",
+          "type": "string"
+        },
+        {
+          "name": "approach",
+          "label": "Mon approche",
+          "type": "object",
+          "fields": [
+            {
+              "name": "image",
+              "label": "Image",
+              "type": "image"
+            },
+            {
+              "name": "alt",
+              "label": "Description de l’image",
+              "type": "string"
+            },
+            {
+              "name": "name",
+              "label": "Nom",
+              "type": "string"
+            },
+            {
+              "name": "title",
+              "label": "Titre du site",
+              "type": "text"
+            },
+            {
+              "name": "paragraph1",
+              "label": "Premier paragraphe",
+              "type": "text"
+            },
+            {
+              "name": "paragraph2",
+              "label": "Second paragraphe",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "name": "contact",
+          "label": "Contact",
+          "type": "object",
+          "fields": [
+            {
+              "name": "title",
+              "label": "Titre du site",
+              "type": "text"
+            },
+            {
+              "name": "email",
+              "label": "Adresse e-mail",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "appearance",
+          "label": "Apparence",
+          "type": "object",
+          "fields": [
+            {
+              "name": "background",
+              "label": "Couleur du fond",
+              "type": "string"
+            },
+            {
+              "name": "zoom",
+              "label": "Intensité du zoom",
+              "type": "number",
+              "options": {
+                "min": 1,
+                "max": 2.2,
+                "step": 0.1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

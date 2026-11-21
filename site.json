@@ -1,0 +1,70 @@
+{
+  "title": "Pogona Production — Gabriel Blervaque",
+  "description": "Gabriel Blervaque, photographe, vidéaste et journaliste. Vos projets, vécus de l’intérieur. Paris, Lille, Bruxelles et ailleurs.",
+  "logo": "pogona.svg",
+  "production": "PRODUCTION",
+  "hero": {
+    "line1": "Vos projets,",
+    "line2": "vécus de l’intérieur.",
+    "subtitle": "Pour qu’on ait envie d’y être.",
+    "discover": "Découvrir",
+    "video": "ocean-video.mp4",
+    "image": "ocean-horizontal.webp",
+    "mobileImage": "ocean.webp",
+    "alt": "Une personne dans l’immensité bleue de l’océan, vue du ciel"
+  },
+  "navigation": {
+    "projects": "Mes réalisations",
+    "approach": "Mon approche",
+    "contact": "Un projet ?"
+  },
+  "introduction": {
+    "name": "Par Gabriel Blervaque",
+    "roles": "Photographie · Vidéo · Reportage",
+    "sectors": "Sport · Entreprises & associations",
+    "location": "Paris · Lille · Bruxelles & ailleurs"
+  },
+  "projectsTitle": "Sur le terrain.",
+  "projectsIntroduction": "Des personnes, du mouvement et des histoires.\nPhotographie · Vidéo · Reportage",
+  "projects": [
+    {
+      "title": "Au cœur de l’action",
+      "category": "SPORT / PHOTOGRAPHIE",
+      "image": "sport.webp",
+      "alt": "Cyclistes en mouvement",
+      "portalTitle": "Vivre l’effort.",
+      "portalLabel": "01 — L’ACTION",
+      "portalText": "Au cœur des événements et des aventures sportives.",
+      "portalLink": "Explorer les projets",
+      "href": "#projets"
+    },
+    {
+      "title": "Au plus près des personnes",
+      "category": "REPORTAGE / PHOTOGRAPHIE",
+      "image": "reportage.webp",
+      "alt": "Une histoire recueillie sur le terrain",
+      "portalTitle": "Faire entendre.",
+      "portalLabel": "02 — LES PERSONNES",
+      "portalText": "Rencontrer celles et ceux qui font vivre les projets.",
+      "portalLink": "Mon regard",
+      "href": "#approche"
+    }
+  ],
+  "portalCaption": "ENTRER DANS LES HISTOIRES",
+  "approach": {
+    "image": "portrait.webp",
+    "alt": "Gabriel Blervaque sur un tournage",
+    "name": "GABRIEL BLERVAQUE",
+    "title": "Comprendre.\nRencontrer.\nFaire ressentir.",
+    "paragraph1": "Je mets en image vos projets et vos événements de l’intérieur, pour que celles et ceux qui les voient aient envie d’en faire partie.",
+    "paragraph2": "Avant de filmer, je prends le temps de comprendre votre projet et les personnes qui le font vivre. Puis je restitue ce qui se vit sur le terrain avec justesse et fidélité."
+  },
+  "contact": {
+    "title": "Et si on racontait\nvotre prochain projet ?",
+    "email": "gabrielblervaque@gmail.com"
+  },
+  "appearance": {
+    "background": "#102b30",
+    "zoom": 1.8
+  }
+}

@@ -86,7 +86,9 @@ function applyContent(content) {
     '--heading-font': look.headingFont, '--body-font': look.bodyFont,
     '--hero-size': look.heroSize && `${look.heroSize}px`,
     '--content-width': look.contentWidth && `${look.contentWidth}px`,
-    '--section-gap': look.sectionGap && `${look.sectionGap}px`
+    '--section-gap': look.sectionGap && `${look.sectionGap}px`,
+    '--hero-x': `${Number(look.heroX ?? 50)}%`, '--hero-y': `${Number(look.heroY ?? 50)}%`,
+    '--reveal-duration': `${Number(look.transitionMs ?? 700)}ms`
   })) if (value && !/[;{}]/.test(String(value))) root.style.setProperty(key, value);
   const order = Array.isArray(content.sectionOrder) ? content.sectionOrder : [];
   const main = document.querySelector('main');
@@ -96,10 +98,11 @@ function applyContent(content) {
   if (!custom) { custom = document.createElement('section'); custom.id = 'pogona-custom-blocks'; main?.append(custom); }
   custom.replaceChildren();
   for (const block of content.blocks || []) {
-    const node = document.createElement('article'); node.className = 'custom-block';
+    const node = document.createElement('article'); node.className = 'custom-block'; node.dataset.effect = ['fade','slide','zoom'].includes(block.effect) ? block.effect : 'fade';
     if (block.type === 'image' && block.image) { const img = document.createElement('img'); img.src = safeURL(block.image); img.alt = block.alt || ''; node.append(img); }
     else if (block.type === 'video' && block.video) { const clip = document.createElement('video'); clip.src = safeURL(block.video); clip.controls = true; clip.playsInline = true; node.append(clip); }
     else { const h = document.createElement('h2'); h.textContent = block.title || ''; const p = document.createElement('p'); p.textContent = block.text || ''; node.append(h,p); }
+    if (block.href) { const link=document.createElement('a'); link.href=safeURL(block.href,'#contact'); link.textContent='Découvrir'; node.append(link); }
     custom.append(node);
   }
   document.title = content.title;
@@ -232,3 +235,33 @@ video.addEventListener("canplay", resumeOpeningVideo);
 window.addEventListener("pageshow", resumeOpeningVideo);
 document.addEventListener("visibilitychange", resumeOpeningVideo);
 document.addEventListener("pointerdown", resumeOpeningVideo, { passive: true });
+
+// Direct selection in the owner's visual atelier. Public visitors never enter edit mode.
+if (new URLSearchParams(location.search).has('edit') && window.parent !== window) {
+  const editable = [
+    ['.logo-art img','logo'],['#signature','hero.line1'],['.hero-copy p','hero.subtitle'],
+    ['.hero-photo img','hero.image'],['.hero-video','hero.video'],
+    ['#projets .heading h2','projectsTitle'],['#projets .heading p','projectsIntroduction'],
+    ['#approche img','approach.image'],['#approche h2','approach.title'],
+    ['#contact h2','contact.title'],['#contact a','contact.email']
+  ];
+  const style = document.createElement('style');
+  style.textContent = '[data-pogona-edit]:hover{outline:3px solid #f4c86b!important;outline-offset:3px;cursor:pointer!important}[data-pogona-edit].editing-selected{outline:4px solid #f4c86b!important;outline-offset:3px}';
+  document.head.append(style);
+  function tagEditable() {
+    for (const [selector,path] of editable) select(selector)?.setAttribute('data-pogona-edit',path);
+    document.querySelectorAll('#project-list .project').forEach((el,i)=>el.setAttribute('data-pogona-edit',`projects.${i}`));
+    document.querySelectorAll('#pogona-custom-blocks .custom-block').forEach((el,i)=>el.setAttribute('data-pogona-edit',`blocks.${i}`));
+  }
+  const observer = new MutationObserver(tagEditable);
+  observer.observe(document.body,{childList:true,subtree:true});
+  tagEditable();
+  document.addEventListener('click',event=>{
+    const target=event.target.closest('[data-pogona-edit]');
+    if(!target)return;
+    event.preventDefault();event.stopPropagation();
+    document.querySelector('.editing-selected')?.classList.remove('editing-selected');
+    target.classList.add('editing-selected');
+    window.parent.postMessage({type:'pogona-select',path:target.getAttribute('data-pogona-edit')},location.origin);
+  },true);
+}

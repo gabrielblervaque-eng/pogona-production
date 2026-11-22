@@ -71,7 +71,10 @@
     "bodyFont": "Arial, sans-serif",
     "heroSize": 88,
     "contentWidth": 1200,
-    "sectionGap": 80
+    "sectionGap": 80,
+    "heroX": 50,
+    "heroY": 50,
+    "transitionMs": 700
   },
   "blocks": [],
   "sectionOrder": [

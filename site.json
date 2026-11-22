@@ -65,6 +65,19 @@
   },
   "appearance": {
     "background": "#102b30",
-    "zoom": 1.8
-  }
+    "zoom": 1.8,
+    "textColor": "#f5f1e9",
+    "headingFont": "Georgia, serif",
+    "bodyFont": "Arial, sans-serif",
+    "heroSize": 88,
+    "contentWidth": 1200,
+    "sectionGap": 80
+  },
+  "blocks": [],
+  "sectionOrder": [
+    "projets",
+    "approche",
+    "contact"
+  ],
+  "hiddenSections": []
 }

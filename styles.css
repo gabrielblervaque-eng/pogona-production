@@ -1082,3 +1082,4 @@ body  {
 
 }
 
+:root{--ink-color:#f5f1e9;--heading-font:Georgia,serif;--body-font:Arial,sans-serif;--hero-size:88px;--content-width:1200px;--section-gap:80px}body{font-family:var(--body-font)}h1,h2,.logo-original{font-family:var(--heading-font)}.hero-copy h1{font-size:clamp(42px,7vw,var(--hero-size))}#projets,#approche,#contact,#pogona-custom-blocks{color:var(--ink-color)}#projets>*,#approche>*,#contact>*{max-width:var(--content-width);margin-left:auto;margin-right:auto}#pogona-custom-blocks{padding:var(--section-gap) 5vw;background:var(--page-color)}.custom-block{max-width:var(--content-width);margin:0 auto var(--section-gap)}.custom-block img,.custom-block video{display:block;max-width:100%;max-height:85vh;object-fit:contain}[hidden]{display:none!important}

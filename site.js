@@ -79,6 +79,29 @@ function renderProjects(projects) {
 }
 
 function applyContent(content) {
+  const look = content.appearance || {};
+  const root = document.documentElement;
+  for (const [key, value] of Object.entries({
+    '--page-color': look.background, '--ink-color': look.textColor,
+    '--heading-font': look.headingFont, '--body-font': look.bodyFont,
+    '--hero-size': look.heroSize && `${look.heroSize}px`,
+    '--content-width': look.contentWidth && `${look.contentWidth}px`,
+    '--section-gap': look.sectionGap && `${look.sectionGap}px`
+  })) if (value && !/[;{}]/.test(String(value))) root.style.setProperty(key, value);
+  const order = Array.isArray(content.sectionOrder) ? content.sectionOrder : [];
+  const main = document.querySelector('main');
+  for (const id of order) { const section = document.getElementById(id); if (main && section && section.parentElement === main) main.append(section); }
+  for (const id of ['projets','approche','contact']) { const section = document.getElementById(id); if (section) section.hidden = Array.isArray(content.hiddenSections) && content.hiddenSections.includes(id); }
+  let custom = document.getElementById('pogona-custom-blocks');
+  if (!custom) { custom = document.createElement('section'); custom.id = 'pogona-custom-blocks'; main?.append(custom); }
+  custom.replaceChildren();
+  for (const block of content.blocks || []) {
+    const node = document.createElement('article'); node.className = 'custom-block';
+    if (block.type === 'image' && block.image) { const img = document.createElement('img'); img.src = safeURL(block.image); img.alt = block.alt || ''; node.append(img); }
+    else if (block.type === 'video' && block.video) { const clip = document.createElement('video'); clip.src = safeURL(block.video); clip.controls = true; clip.playsInline = true; node.append(clip); }
+    else { const h = document.createElement('h2'); h.textContent = block.title || ''; const p = document.createElement('p'); p.textContent = block.text || ''; node.append(h,p); }
+    custom.append(node);
+  }
   document.title = content.title;
   select('meta[name="description"]').content = content.description;
   select('meta[property="og:title"]').content = content.title;
@@ -139,8 +162,9 @@ function applyContent(content) {
   if (/^#[0-9a-f]{6}$/i.test(content.appearance.background)) {
     document.documentElement.style.setProperty("--page-color", content.appearance.background);
   }
-  maximumZoom = Math.max(1, Math.min(2.2, Number(content.appearance.zoom) || 1.8));
+  maximumZoom = Math.max(1, Math.min(2.2, Number(look.zoom) || 1.8));
 }
+window.addEventListener('message', event => { if (event.origin === location.origin && event.data?.type === 'pogona-preview') { applyContent(event.data.content); updateScroll(); } });
 
 function updateScroll() {
   scheduled = false;
